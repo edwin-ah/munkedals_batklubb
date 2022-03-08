@@ -68,6 +68,10 @@
       align-items: flex-end;
   }
 
+  .max-h-3\/4-screen {
+    max-height: 75vh;
+  }
+
 @media only screen and (min-width: 768px) {
   .navbar-background { 
       background: linear-gradient(rgba(39, 39, 39, 0.75), rgba(39, 39, 39, 0.25)), url("/web_images/ny-brygga-lg.jpg");

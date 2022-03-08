@@ -72,7 +72,7 @@
           {{-- Image modal --}}
           <div x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }">
             <template @img-modal.window="imgModal = true; imgModalSrc = $event.detail.imgModalSrc; imgModalDesc = $event.detail.imgModalDesc;" x-if="imgModal">
-              <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" x-on:click.away="imgModalSrc = ''" class="p-2 fixed w-full h-full inset-0 z-50 overflow-hidden flex justify-center items-center bg-black bg-opacity-80">
+              <div x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90" x-on:click.away="imgModalSrc = ''" class="p-2 fixed w-full h-screen inset-0 z-50 overflow-hidden flex justify-center items-center bg-black bg-opacity-80">
                 <div @click.away="imgModal = false" class="flex flex-col w-auto mx-auto bg-white overflow-auto rounded">
                   <div class="z-50">
                     <button @click="imgModal = false" class="float-right pt-2 pr-2 outline-none focus:outline-none">
@@ -86,7 +86,7 @@
                     </button>
                   </div>
                   <div class="p-2">
-                    <img :alt="imgModalSrc" class="object-contain h-full mx-auto" :src="imgModalSrc">
+                    <img :alt="imgModalSrc" class="object-contain max-h-3/4-screen mx-auto" :src="imgModalSrc">
                     <p x-text="imgModalDesc" class="text-center"></p>
                   </div>
                 </div>
