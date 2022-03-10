@@ -10,10 +10,10 @@
 
           <form action="{{ route('album-image.destroy') }}" method="POST">
             @csrf
-
+            <input type="hidden" name="albumId" value="{{ $album->id }}">
             @foreach($album->albumImage as $image)
               <div class="flex flex-row py-2">
-                <input class="self-center mr-5 appearance-none rounded checked:bg-blue-600 checked:border-transparent" type="checkbox" name="imageId[]" id="{{ $image->id }}" value="{{ $image->id }}">
+                <input class="self-center mr-5 appearance-none rounded checked:bg-blue-600 checked:border-transparent" type="checkbox" name="imageIds[]" id="{{ $image->id }}" value="{{ $image->id }}">
                 <label for="{{ $image->id }}">
                   <img class="h-48" src="{{ url('storage/uploads/images/album_images/'.$image->imageName) }}" alt="{{ $image->name }}">
                 </label>
@@ -22,7 +22,7 @@
 
             <input type="hidden" name="id" value="{{ $album->id }}">
             <div class="my-4">
-              <p>Är du säker på att du vill radera dessa bilder?</p>
+              <p class="font-bold">Är du säker på att du vill radera dessa bilder?</p>
               <input @click="btnDisabled = !btnDisabled" type="checkbox" id="confirm" name="isConfirmed" class="mr-1 appearance-none rounded checked:bg-blue-600 checked:border-transparent">
               <label for="confirm">Ja</label>
             </div>

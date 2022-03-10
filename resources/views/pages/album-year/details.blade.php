@@ -33,7 +33,7 @@
                     <span class="text-green-500 hover:text-green-700">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" stroke="transparent" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
                     </span>
-                    <p class="absolute text-center hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Lägg till bild</p>
+                    <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Lägg till bild</p>
                   </a>
                 </div>
 
@@ -41,7 +41,7 @@
                   <a href="{{ route('album-image.delete', ['albumId' => $album->id]) }}">
                     <span class="text-main hover:text-black">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" stroke="transparent" fill="currentColor" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/></svg>                    </span>
-                    <p class="absolute text-center hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Ta bort bilder</p>
+                    <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Ta bort bilder</p>
                   </a>
                 </div>
 
@@ -50,7 +50,7 @@
                     <span class="text-main hover:text-black">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" stroke="transparent" fill="currentColor" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
                     </span>
-                    <p class="absolute text-center hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Redigera</p>
+                    <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Redigera</p>
                   </a>
                 </div>
 
@@ -59,7 +59,7 @@
                     <span class="text-red-500 hover:text-red-700">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" stroke="transparent" fill="currentColor" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>
                     </span>
-                    <p class="absolute text-center hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Radera album</p>
+                    <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Radera album</p>
                   </a>
                 </div>
               </div>

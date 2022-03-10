@@ -6,6 +6,7 @@ use App\Models\Album;
 use App\Models\AlbumImage;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumImageController extends Controller
 {
@@ -70,6 +71,26 @@ class AlbumImageController extends Controller
     }
 
     public function destroy(Request $request) {
-        dd($request->imageId);
+        $request->validate([
+            'imageIds' => 'required',
+            'albumId' => 'required'
+        ]);
+
+        $imageIds = $request->imageIds;
+        $album = Album::where('id', $request->albumId)->with('albumYear')->get();
+
+        try {
+            // radera bilden ur databasen
+            foreach($imageIds as $imageId) {
+                $image = AlbumImage::findOrFail($imageId);
+                if(AlbumImage::destroy($imageId)) {
+                    // radera bildfilen
+                    Storage::delete('public/uploads/images/album_images/'.$image->imageName);
+                }
+            }
+            return redirect()->route('album-year.details', ['albumYear' => $album[0]->albumYear->year]);
+        } catch(Exception $ex) {
+            return redirect(url('album-year.index'))->with('status', 'Ett fel uppstod när bilden/bilderna skulle raderas.');
+        }
     }
 }

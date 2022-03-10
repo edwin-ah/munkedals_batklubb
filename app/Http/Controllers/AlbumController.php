@@ -33,7 +33,8 @@ class AlbumController extends Controller
 
             $newAlbum->save();
 
-            return redirect(route('album-year.index'))->with('status', 'Albumet har lagts till.');
+            return redirect()->route('album-image.add', ['albumId' => $newAlbum->id]);
+
         } catch(Exception $ex) {
             dd($ex);
             return redirect(route('album-year.index'))->with('status', 'Ett fel uppstod, det gick inte lägga till albumet.');
