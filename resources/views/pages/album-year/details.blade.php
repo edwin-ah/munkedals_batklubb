@@ -24,7 +24,7 @@
 
     @if (count($albums) > 0) 
       @foreach ($albums as $album)
-        <div class="border border-gray-200 rounded-lg my-10 p-5">
+        <div class="border border-gray-200 rounded-lg my-10 p-5" id="{{ $album->id }}">
           @if (auth()->user())
             <div class="relative">
               <div class="absolute right-0 top-0 flex flex-row">
@@ -67,7 +67,7 @@
           @endif
           <h3 class="text-center text-main text-lg font-bold tracking-wider border-b-2 border-gray-200">{{$album->title}}</h3>
          
-          <p>{{ $album->description }}</p>
+          <p class="text-center py-2">{{ $album->description }}</p>
         
           {{-- Image modal --}}
           <div x-data="{ imgModal : false, imgModalSrc : '', imgModalDesc : '' }">
