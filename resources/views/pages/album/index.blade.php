@@ -33,7 +33,7 @@
     @if (count($years) > 0)
       @foreach ($years as $year)
         <div>
-          <a href="{{ route('album-year.details', ['albumYear' => $year->year]) }}">{{$year->year}}</a>
+          <a href="{{ route('album-year', ['albumYear' => $year]) }}">{{$year}}</a>
         </div>
       @endforeach
 

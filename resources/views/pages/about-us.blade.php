@@ -1,7 +1,7 @@
-<x-app-layout>
-  <div class="bg-main">
+{{-- <x-app-layout>
+  <div class="bg-main"> --}}
     {{-- <hr class="border-t-1 border-white w-4/5 mx-auto" /> --}}
-    <h1 class="pt-10 text-center text-xl font-semibold text-white work-sans md:text-2xl lg:text-4xl">
+    {{-- <h1 class="pt-10 text-center text-xl font-semibold text-white work-sans md:text-2xl lg:text-4xl">
         Om oss
     </h1>
   </div>
@@ -69,4 +69,4 @@
     </div>
 
   </div>
-</x-app-layout>
+</x-app-layout> --}}

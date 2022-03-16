@@ -37,7 +37,7 @@
           <div class="px-5 pt-10 lg:pt-0 lg:w-1/3">
             Hej här ska bild vara
             <div>
-              <a href="{{ route('album-year.index') }}">Klicka här för att komma till vårat bildarkiv</a>
+              <a href="{{ route('album.index') }}">Klicka här för att komma till vårat bildarkiv</a>
             </div>
           </div>
           

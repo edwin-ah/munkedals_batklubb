@@ -11,6 +11,7 @@ class Album extends Model
 
     protected $fillable = [
         'title',
+        'year',
         'description',
         'album_year_id'
     ];
@@ -19,7 +20,7 @@ class Album extends Model
         return $this->hasMany(AlbumImage::class);
     }
 
-    public function albumYear() {
-        return $this->belongsTo(AlbumYear::class);
-    }
+    // public function albumYear() {
+    //     return $this->belongsTo(AlbumYear::class);
+    // }
 }

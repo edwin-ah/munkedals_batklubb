@@ -78,8 +78,8 @@ Route::get('/styrelse/delete/{boardMemberId}', [BoardMemberController::class, 'd
 Route::post('/styrelse/delete', [BoardMemberController::class, 'destroy'])->middleware(['auth'])->name('board-member.delete');
 Route::post('styrelse/delete-image', [BoardMemberController::class, 'destroyImage'])->middleware(['auth'])->name('board-member.delete-image');
 
-Route::get('/bildarkivet', [AlbumYearController::class, 'index'])->name('album-year.index');
-Route::get('/bildarkivet/{albumYear}', [AlbumYearController::class, 'details'])->name('album-year.details');
+Route::get('/bildarkivet', [AlbumController::class, 'index'])->name('album.index');
+Route::get('/bildarkivet/{albumYear}', [AlbumController::class, 'albumsYear'])->name('album-year');
 Route::get('/bildarkivet/album/add', function() {
     return view('pages.album.add-album');
 })->middleware(['auth'])->name('album.add');

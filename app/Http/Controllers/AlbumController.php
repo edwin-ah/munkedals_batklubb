@@ -10,7 +10,11 @@ use Illuminate\Http\Request;
 class AlbumController extends Controller
 {
     public function index() {
-        
+        $years = Album::orderBy('year')->distinct('year')->pluck('year');
+
+        return view('pages.album.index', [
+            'years' => $years
+          ]);
     }
 
     public function store(Request $request) {
@@ -21,29 +25,35 @@ class AlbumController extends Controller
         ]);
 
         try {
-            $year = AlbumYear::firstOrCreate([
-                'year' => $request->year
-            ]);
-
             $newAlbum = Album::create([
-                'album_year_id' => $year->id,
                 'title' => $request->title,
+                'year' => $request->year,
                 'description' => $request->description
             ]);
-
             $newAlbum->save();
 
             return redirect()->route('album-image.add', ['albumId' => $newAlbum->id]);
 
         } catch(Exception $ex) {
             dd($ex);
-            return redirect(route('album-year.index'))->with('status', 'Ett fel uppstod, det gick inte lägga till albumet.');
+            return redirect(route('album.index'))->with('status', 'Ett fel uppstod, det gick inte lägga till albumet.');
         }
-        
+    }
+
+    public function albumsYear(int $year) {
+        if($year == null) {
+          abort(404);
+        }
+
+        $albums = Album::where('year', $year)->with('albumImage')->get();
+
+        return view('pages.album.albums-year', [
+          'albums' => $albums
+        ]);
     }
 
     public function edit(int $id) {
-        $album = Album::with('albumYear')->findOrFail($id);
+        $album = Album::findOrFail($id);
         return view('pages.album.edit-album', [
             'album' => $album
         ]);
@@ -58,25 +68,14 @@ class AlbumController extends Controller
 
         try {
    
-            $album = Album::with('albumYear')->findOrFail($request->id);
+            $album = Album::findOrFail($request->id);
 
             $album->title = $request->title;
+            $album->year = $request->year;
             $album->description = $request->description;
             $album->save();
 
-            if ($request->year != $album->albumYear->year) {
-                $oldAlbumYear = $album->album_year_id;
-
-                $year = AlbumYear::firstOrCreate([
-                    'year' => $request->year
-                ]);
-                $album->album_year_id = $year->id;
-                $album->save();
-
-                $this->checkAlbumYear($oldAlbumYear);
-            }
-
-            return redirect()->route('album-year.details', ['albumYear' => $album->albumYear->year]);
+            return redirect()->route('album-year', ['albumYear' => $album->year])->withFragment('#'.$album->id);
 
         } catch(Exception $ex) {
             dd($ex);
@@ -90,12 +89,5 @@ class AlbumController extends Controller
 
     public function destroy(Request $request) {
         
-    }
-
-    private function checkAlbumYear($yearId) {
-        $year = AlbumYear::with('album')->find($yearId);
-        if(count($year->album) == 0) {
-            $year->delete();
-        }       
     }
 }

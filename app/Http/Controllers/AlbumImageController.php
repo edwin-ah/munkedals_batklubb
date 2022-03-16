@@ -28,7 +28,7 @@ class AlbumImageController extends Controller
             'descriptions.*' => 'nullable|max:255'
         ]);
 
-        $album = Album::with('albumYear')->findOrFail($request->albumId);
+        $album = Album::findOrFail($request->albumId);
 
         try {
             for($i = 0; $i < count($request->images); $i++) {
@@ -46,7 +46,7 @@ class AlbumImageController extends Controller
                 ]);
             }
 
-            return redirect()->route('album-year.details', ['albumYear' => $album->albumYear->year])->withFragment('#'.$album->id);
+            return redirect()->route('album-year', ['albumYear' => $album->year])->withFragment('#'.$album->id);
 
         } catch(Exception $ex) {
             dd($ex);
@@ -77,7 +77,7 @@ class AlbumImageController extends Controller
         ]);
 
         $imageIds = $request->imageIds;
-        $album = Album::where('id', $request->albumId)->with('albumYear')->get();
+        $album = Album::findOrFail($request->albumId);
 
         try {
             // radera bilderna ur databasen
@@ -87,7 +87,7 @@ class AlbumImageController extends Controller
                     Storage::delete('public/uploads/images/album_images/'.$image->imageName);
                 }
             }
-            return redirect()->route('album-year.details', ['albumYear' => $album[0]->albumYear->year])->withFragment('#'.$album->id);
+            return redirect()->route('album-year', ['albumYear' => $album->year])->withFragment('#'.$album->id);
         } catch(Exception $ex) {
             return redirect(url('album-year.index'))->with('status', 'Ett fel uppstod när bilden/bilderna skulle raderas.');
         }

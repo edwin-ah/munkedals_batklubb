@@ -10,4 +10,4 @@
 9. Placeholder på textinput
 10. Avgifter pdf
 11. redirect efter album laddats upp
-12. kolla när album-år ändrats att det fortfarande finns album med årtalet, annars delete
+12. Bildarkivet rubrik - klickbar
