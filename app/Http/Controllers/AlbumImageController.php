@@ -87,9 +87,13 @@ class AlbumImageController extends Controller
                     Storage::delete('public/uploads/images/album_images/'.$image->imageName);
                 }
             }
-            return redirect()->route('album-year', ['albumYear' => $album->year])->withFragment('#'.$album->id);
+            return redirect()->route('album-year', ['albumYear' => $album->year])
+                                    ->withFragment('#'.$album->id)
+                                    ->with('status', "De valda bilderna ur albumet '{$album->name}' är borttagna.");
         } catch(Exception $ex) {
-            return redirect(url('album-year.index'))->with('status', 'Ett fel uppstod när bilden/bilderna skulle raderas.');
+            return redirect()->route('album-year', ['albumYear' => $album->year])
+                            ->withFragment('#'.$album->id)
+                            ->with('status', "Ett fel uppstod när bilderna skulle raderas.");
         }
     }
 }

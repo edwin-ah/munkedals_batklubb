@@ -6,6 +6,7 @@ use App\Models\Album;
 use App\Models\AlbumYear;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -75,19 +76,39 @@ class AlbumController extends Controller
             $album->description = $request->description;
             $album->save();
 
-            return redirect()->route('album-year', ['albumYear' => $album->year])->withFragment('#'.$album->id);
+            return redirect()->route('album-year', ['albumYear' => $album->year])
+                                ->withFragment('#'.$album->id)
+                                ->with('status', "'{$album->name}' är uppdaterat.");
 
         } catch(Exception $ex) {
             dd($ex);
-            return redirect(route('album-year.index'))->with('status', 'Ett fel uppstod, det gick inte lägga till albumet.');
+            return redirect()->route('album-year', ['albumYear' => $album->year])
+                                ->withFragment('#'.$album->id)
+                                ->with('status', "Ett fel uppstod när albumet '{$album->name}' skulle uppdateras.");
         }
     }
 
     public function delete(int $id) {
+        $album = Album::findOrFail($id);
 
+        return view('pages.album.delete-album', [
+            'album' => $album
+        ]);
     }
 
     public function destroy(Request $request) {
+        try {
+            $album = Album::with('albumImage')->findOrFail($request->id);
+            Album::destroy($album->id);
+            foreach($album->albumImage as $image)
+            {
+                Storage::delete('public/uploads/images/album_images/'.$image->imageName);
+            }
+            return redirect(route('album-index'))->with('status', "Albumet '{$album->name}' är raderat.");
+        } catch(Exception $ex) {
+            dd($ex);
+            return redirect(route('album-index'))->with('status', "Ett fel uppstod när albumet '{$album->name}' skulle raderas.");
+        }
         
     }
 }

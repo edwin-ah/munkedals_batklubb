@@ -87,7 +87,7 @@ Route::post('bildarkivet/album/add', [AlbumController::class, 'store'])->middlew
 Route::get('/bildarkivet/album/edit/{albumId}', [AlbumController::class, 'edit'])->middleware(['auth'])->name('album.edit');
 Route::post('/bildarkivet/album/edit', [AlbumController::class, 'update'])->middleware(['auth'])->name('album.update');
 Route::get('/bildarkivet/album/delete/{albumId}', [AlbumController::class, 'delete'])->middleware(['auth'])->name('album.delete.confirm');
-Route::post('/bildarkivet/album/edit/{albumId}', [AlbumController::class, 'destroy'])->middleware(['auth'])->name('album.delete');
+Route::post('/bildarkivet/album/delete', [AlbumController::class, 'destroy'])->middleware(['auth'])->name('album.delete');
 
 Route::get('album/add/image/{albumId}', [AlbumImageController::class, 'add'])->middleware(['auth'])->name('album-image.add');
 Route::post('album/add/image', [AlbumImageController::class, 'store'])->middleware(['auth'])->name('album-image.store');

@@ -58,7 +58,7 @@
             <button type="submit" class="text-center rounded bg-green-500 text-white px-5 py-2 shadow hover:bg-green-600 focus:bg-green-600">Spara</button>
           </div>
           <div class="mb-4">
-            <a class="text-center rounded px-5 py-2 shadow btn-primary" href="{{ route('current-information.index') }}">Tillbaka</a>
+            <a class="text-center rounded px-5 py-2 shadow btn-primary" href="{{ route('album-year', ['albumYear' => $album->year]) }}">Tillbaka</a>
           </div>
         </form>
       </div>
@@ -73,7 +73,7 @@
     return {
       fields: [{
         image: null,
-        description: 'hello'
+        description: ''
       }],
       addNewField() {
         this.fields.push({

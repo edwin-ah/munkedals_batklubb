@@ -19,8 +19,4 @@ class Album extends Model
     public function albumImage() {
         return $this->hasMany(AlbumImage::class);
     }
-
-    // public function albumYear() {
-    //     return $this->belongsTo(AlbumYear::class);
-    // }
 }
