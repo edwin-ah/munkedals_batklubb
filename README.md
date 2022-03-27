@@ -1,5 +1,5 @@
 # Website for Munkedals Båtklubb
-This website is built with [Laravel 8](https://laravel.com/docs/8.x) and [Tailwind CSS](https://v2.tailwindcss.com/docs)
+This is a website in progress that is built with [Laravel 8](https://laravel.com/docs/8.x) and [Tailwind CSS](https://v2.tailwindcss.com/docs)
 ## Setup
 To run this project, install it locally:
 1. Download the project
