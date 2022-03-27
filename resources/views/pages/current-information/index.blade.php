@@ -38,9 +38,9 @@
       <table class="w-full bg-gray-50 divide-y divide-gray-400 rounded shadow" class="px-6 py-3">
         <thead>
           <tr>
-            <td class="px-6 py-3">Titel</td>
-            <td class="px-6 py-3">Beskrivning</td>
-            <td class="px-6 py-3"></td>
+            <td class="px-6 py-3 font-bold font-lg tracking-wide">Titel</td>
+            <td class="px-6 py-3 font-bold font-lg tracking-wide">Beskrivning</td>
+            <td class="px-6 py-3 font-bold font-lg tracking-wide">Åtgärd</td>
           </tr>
         </thead>
         <tbody class="bg-gray-50 divide-y divide-gray-200">
@@ -48,13 +48,26 @@
           <tr class="px-6 py-3">
             <td class="px-6 py-3 font-bold">{{ $currentInformation->header }}</td>
             <td class="px-6 py-3 truncate">{{ $currentInformation->description }}</td>
-            <td class="py-3">
-              <a href="{{ route('current-information.edit', ['currentInformationId' => $currentInformation->id]) }}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" stroke="transparent" fill="currentColor" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
-              </a>
-              <a href="{{ route('current-information.delete.confirm', ['currentInformationId' => $currentInformation->id]) }}" class="text-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" stroke="transparent" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>
-              </a>
+            <td class="px-6 py-3">
+              <div class="flex flex-row justify-start">
+                <div class="group">
+                  <span>
+                    <a href="{{ route('current-information.edit', ['currentInformationId' => $currentInformation->id]) }}">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" stroke="transparent" fill="currentColor" viewBox="0 0 24 24" ><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/></svg>
+                    </a>
+                  </span>
+                  <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Ändra</p>
+                </div>
+                |
+                <div class="group">
+                  <span>
+                    <a href="{{ route('current-information.delete.confirm', ['currentInformationId' => $currentInformation->id]) }}" class="text-red-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" stroke="transparent" fill="currentColor" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M14.12 10.47L12 12.59l-2.13-2.12-1.41 1.41L10.59 14l-2.12 2.12 1.41 1.41L12 15.41l2.12 2.12 1.41-1.41L13.41 14l2.12-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"/></svg>
+                    </a>
+                  </span>
+                  <p class="absolute text-center z-50 hidden group-hover:block text-sm tracking-wider bg-black bg-opacity-80 text-white px-2 py-1 rounded">Radera</p>
+                </div>
+              </div>
             </td>
           </tr>
           @endforeach
