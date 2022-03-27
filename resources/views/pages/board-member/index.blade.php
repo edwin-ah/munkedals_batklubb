@@ -44,7 +44,7 @@
         </div>
       </section>
   
-      <div class="pt-10">
+      <div class="pt-10" id="boardMembers">
         <h2 class="text-2xl font-semibold text-main work-sans">Vår Styrelse och funktionärer</h2>
         @if (auth()->user())
             <div class="mt-4 mb-2">

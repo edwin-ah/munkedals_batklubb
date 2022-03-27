@@ -142,7 +142,7 @@
               <h1 class="pl-5 text-2xl font-semibold text-main work-sans lg:text-center lg:pl-0">Kontakta oss</h1>
           </div>
 
-          <div class="flex flex-col justify-between lg:flex-row px-10 pt-5">
+          <div class="flex flex-col justify-between lg:flex-row px-10 pt-5" id="kontakt">
             <div class="py-5 lg:pt-0">
               <h3 class="md:text-xl text-lg text-gray-900 font-bold lg:text-center">Kontaktuppgifter</h3>
               <div>

@@ -36,16 +36,18 @@
             </x-nav.nav-link>
             <div class="px-4 py-2 bg-black bg-opacity-95 absolute hidden flex group-hover:block">
               <div class="flex flex-col justify-center">
-                <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">Medlemsmötesprotokoll</a>
-                <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
-                <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
-                <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
+                <x-nav.sub-nav-link :href="route('protocol.index')" :active="request()->routeIs('protocol.index')">
+                  {{ __('Mötesprotokoll') }}
+                </x-nav.sub-nav-link>
+                <x-nav.sub-nav-link :href="route('information.index').'#kontakt'">
+                  {{ __('Kontakt') }}
+                </x-nav.sub-nav-link>
               </div>
             </div>
           </div>
           <div>
             <div class="group">
-              <x-nav.nav-link :href="route('board-member.index')" :active="request()->routeIs('testRoute')">
+              <x-nav.nav-link :href="route('board-member.index')" :active="request()->routeIs('board-member.index')">
                 {{ __('Om oss') }}
                 <span class="text-white hover:text-gray-300">
                   <svg
@@ -57,10 +59,9 @@
               </x-nav.nav-link>
               <div class="px-4 py-2 bg-black bg-opacity-95 absolute hidden flex group-hover:block">
                 <div class="flex flex-col justify-center">
-                  <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">Bildarkivet</a>
-                  <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
-                  <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
-                  <a href="" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-white hover:text-gray-300 hover:border-gray-300 focus:text-gray-300 focus:border-gray-300 transition duration-150 ease-in-out">HELLO</a>
+                  <x-nav.sub-nav-link :href="route('album.index')" :active="request()->routeIs('album.index')">
+                    {{ __('Bildarkivet') }}
+                  </x-nav.sub-nav-link>
                 </div>
               </div>
             </div>
