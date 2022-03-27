@@ -1,6 +1,6 @@
 # Website for Munkedals Båtklubb
 This website is built with [Laravel 8](https://laravel.com/docs/8.x) and [Tailwind CSS](https://v2.tailwindcss.com/docs)
-## Setuo
+## Setup
 To run this project, install it locally:
 1. Download the project
 2. Run `composer update`
